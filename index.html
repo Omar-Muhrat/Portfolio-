@@ -1,0 +1,1992 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Omar Muhrat – Mechatronics Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f5f4f0;
+        --surface: #ffffff;
+        --text: #111110;
+        --text-secondary: #5a5a56;
+        --accent: #1a3a5c;
+        --accent-light: #2c5282;
+        --accent-muted: #e8eef5;
+        --border: #e2e0da;
+        --tag-bg: #edf2f7;
+        --highlight: #c8a96e;
+        --nav-h: 70px;
+        --radius: 12px;
+        --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        height: var(--nav-h);
+        background: rgba(245, 244, 240, 0.9);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 clamp(1.5rem, 5vw, 4rem);
+      }
+      .nav-logo {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.25rem;
+        color: var(--accent);
+        text-decoration: none;
+        letter-spacing: -0.02em;
+      }
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        align-items: center;
+      }
+      .nav-links a {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color var(--transition);
+      }
+      .nav-links a:hover {
+        color: var(--accent);
+      }
+      .lang-switch {
+        display: flex;
+        gap: 0.25rem;
+      }
+      .lang-btn {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        border: 1.5px solid var(--border);
+        border-radius: 6px;
+        background: transparent;
+        cursor: pointer;
+        color: var(--text-secondary);
+        transition: all var(--transition);
+        font-family: "DM Sans", sans-serif;
+        letter-spacing: 0.05em;
+      }
+      .lang-btn.active,
+      .lang-btn:hover {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 4px;
+      }
+      .hamburger span {
+        width: 22px;
+        height: 2px;
+        background: var(--text);
+        border-radius: 2px;
+        transition: all var(--transition);
+      }
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: var(--nav-h);
+        left: 0;
+        right: 0;
+        z-index: 99;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: 1.5rem clamp(1.5rem, 5vw, 4rem);
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+      .mobile-menu.open {
+        display: flex;
+      }
+      .mobile-menu a {
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--text);
+        text-decoration: none;
+      }
+
+      main {
+        padding-top: var(--nav-h);
+      }
+      section {
+        padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem);
+      }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      /* HERO */
+      #hero {
+        min-height: calc(100vh - var(--nav-h));
+        display: grid;
+        grid-template-columns: 1fr 420px;
+        gap: 4rem;
+        align-items: center;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        position: relative;
+        overflow: hidden;
+      }
+      #hero::before {
+        content: "";
+        position: absolute;
+        right: -80px;
+        top: -80px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          var(--accent-muted) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      .hero-text {
+        position: relative;
+        z-index: 1;
+      }
+      .hero-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--highlight);
+        margin-bottom: 1.5rem;
+      }
+      .hero-label::before {
+        content: "";
+        width: 28px;
+        height: 1.5px;
+        background: var(--highlight);
+      }
+      h1.hero-name {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(2.8rem, 5vw, 4.2rem);
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        color: var(--accent);
+        margin-bottom: 0.75rem;
+      }
+      .hero-title {
+        font-size: clamp(1rem, 1.8vw, 1.2rem);
+        color: var(--text-secondary);
+        font-weight: 400;
+        margin-bottom: 1.5rem;
+      }
+      .hero-tagline {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        max-width: 480px;
+        margin-bottom: 2rem;
+        line-height: 1.7;
+      }
+      .hero-location {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+      }
+      .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.8rem 1.8rem;
+        background: var(--accent);
+        color: #fff;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all var(--transition);
+        border: 2px solid var(--accent);
+      }
+      .btn-primary:hover {
+        background: var(--accent-light);
+        border-color: var(--accent-light);
+        transform: translateY(-1px);
+        box-shadow: 0 8px 24px rgba(26, 58, 92, 0.2);
+      }
+      .btn-outline {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.8rem 1.8rem;
+        background: transparent;
+        color: var(--accent);
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all var(--transition);
+        border: 2px solid var(--accent);
+      }
+      .btn-outline:hover {
+        background: var(--accent-muted);
+        transform: translateY(-1px);
+      }
+      .hero-photo {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .photo-frame {
+        width: 300px;
+        height: 360px;
+        background: linear-gradient(
+          135deg,
+          var(--accent-muted) 0%,
+          #dde8f0 100%
+        );
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .photo-frame::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='1' fill='%231a3a5c' fill-opacity='0.05'/%3E%3C/svg%3E");
+      }
+      .photo-icon {
+        width: 80px;
+        height: 80px;
+        background: var(--accent);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+      }
+      .photo-icon svg {
+        width: 40px;
+        height: 40px;
+        fill: #fff;
+      }
+      .photo-hint {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        padding: 0 1.5rem;
+      }
+      .photo-badge {
+        position: absolute;
+        bottom: 20px;
+        right: -14px;
+        background: var(--accent);
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        box-shadow: 0 4px 16px rgba(26, 58, 92, 0.3);
+        z-index: 2;
+      }
+
+      /* SECTION HEADERS */
+      .section-header {
+        margin-bottom: 3rem;
+      }
+      .section-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--highlight);
+        margin-bottom: 0.6rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .section-label::after {
+        content: "";
+        flex: 0 0 24px;
+        height: 1.5px;
+        background: var(--highlight);
+      }
+      .section-title {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(1.8rem, 3vw, 2.4rem);
+        color: var(--accent);
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+      }
+
+      /* ABOUT */
+      #about {
+        background: var(--bg);
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 4rem;
+        align-items: start;
+      }
+      .about-text p {
+        color: var(--text-secondary);
+        line-height: 1.8;
+        margin-bottom: 1rem;
+        font-size: 0.975rem;
+      }
+      .about-stats {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+      .stat-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.4rem 1.6rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        transition: box-shadow var(--transition);
+      }
+      .stat-card:hover {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+      }
+      .stat-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        background: var(--accent-muted);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 1.2rem;
+      }
+      .stat-info strong {
+        display: block;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--text);
+        margin-bottom: 0.2rem;
+      }
+      .stat-info span {
+        font-size: 0.82rem;
+        color: var(--text-secondary);
+      }
+
+      /* SKILLS */
+      #skills {
+        background: var(--surface);
+      }
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.25rem;
+      }
+      .skill-card {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.6rem 1.4rem;
+        transition: all var(--transition);
+        cursor: default;
+      }
+      .skill-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 28px rgba(26, 58, 92, 0.1);
+        border-color: var(--accent);
+      }
+      .skill-icon {
+        font-size: 1.8rem;
+        margin-bottom: 0.75rem;
+      }
+      .skill-name {
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--text);
+        margin-bottom: 0.4rem;
+      }
+      .skill-desc {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
+      }
+      .skill-bar {
+        margin-top: 0.75rem;
+        height: 3px;
+        background: var(--border);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .skill-fill {
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--accent) 0%,
+          var(--highlight) 100%
+        );
+        border-radius: 2px;
+      }
+
+      /* EXPERIENCE */
+      #experience {
+        background: var(--bg);
+      }
+      .timeline {
+        position: relative;
+        padding-left: 2rem;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 6px;
+        top: 8px;
+        bottom: 8px;
+        width: 2px;
+        background: var(--border);
+      }
+      .timeline-item {
+        position: relative;
+        margin-bottom: 2.8rem;
+      }
+      .timeline-item:last-child {
+        margin-bottom: 0;
+      }
+      .timeline-dot {
+        position: absolute;
+        left: -2rem;
+        top: 6px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--surface);
+        border: 2.5px solid var(--accent);
+        z-index: 1;
+      }
+      .timeline-dot.current {
+        background: var(--accent);
+      }
+      .timeline-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.6rem 1.8rem;
+        transition: box-shadow var(--transition);
+      }
+      .timeline-card:hover {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+      }
+      .timeline-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 0.35rem;
+      }
+      .timeline-role {
+        font-weight: 700;
+        font-size: 1.05rem;
+        color: var(--accent);
+      }
+      .timeline-period {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--highlight);
+        background: #fdf5e8;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        letter-spacing: 0.03em;
+        white-space: nowrap;
+      }
+      .timeline-company {
+        font-size: 0.88rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.9rem;
+        font-weight: 500;
+      }
+      .timeline-bullets {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      .timeline-bullets li {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        padding-left: 1.1rem;
+        position: relative;
+        line-height: 1.6;
+      }
+      .timeline-bullets li::before {
+        content: "▸";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+        font-size: 0.65rem;
+        top: 5px;
+      }
+
+      /* EDUCATION */
+      #education {
+        background: var(--surface);
+      }
+      .edu-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .edu-card {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 2rem;
+        transition: all var(--transition);
+      }
+      .edu-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.07);
+      }
+      .edu-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      .edu-degree {
+        font-weight: 700;
+        font-size: 1rem;
+        color: var(--accent);
+        margin-bottom: 0.35rem;
+      }
+      .edu-school {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+      .edu-year {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--highlight);
+        background: #fdf5e8;
+        padding: 0.2rem 0.7rem;
+        border-radius: 20px;
+        margin-top: 0.5rem;
+      }
+      .edu-card-wide {
+        background: var(--accent-muted);
+        border: 1.5px solid var(--accent);
+      }
+      .edu-card-wide .edu-inner {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      /* PROJECTS */
+      #projects {
+        background: var(--bg);
+      }
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+      .project-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 2rem;
+        transition: all var(--transition);
+        display: flex;
+        flex-direction: column;
+      }
+      .project-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 36px rgba(26, 58, 92, 0.12);
+        border-color: var(--accent);
+      }
+      .project-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      .project-tag {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+        background: var(--accent-muted);
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        margin-bottom: 0.75rem;
+      }
+      .project-title {
+        font-weight: 700;
+        font-size: 1.05rem;
+        color: var(--text);
+        margin-bottom: 0.6rem;
+      }
+      .project-desc {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        line-height: 1.7;
+        flex: 1;
+      }
+      .project-stack {
+        margin-top: 1.2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+      .stack-tag {
+        font-size: 0.72rem;
+        font-weight: 500;
+        color: var(--text-secondary);
+        background: var(--tag-bg);
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        border: 1px solid var(--border);
+      }
+
+      /* LANGUAGES */
+      #languages {
+        background: var(--surface);
+      }
+      .lang-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        max-width: 680px;
+      }
+      .lang-card {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.6rem;
+        text-align: center;
+        transition: all var(--transition);
+      }
+      .lang-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+      }
+      .lang-flag {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+      .lang-name {
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--text);
+        margin-bottom: 0.3rem;
+      }
+      .lang-level {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+      }
+      .lang-dots {
+        display: flex;
+        justify-content: center;
+        gap: 4px;
+        margin-top: 0.6rem;
+      }
+      .lang-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--border);
+      }
+      .lang-dot.filled {
+        background: var(--accent);
+      }
+
+      /* CONTACT */
+      #contact {
+        background: var(--accent);
+        color: #fff;
+      }
+      #contact .section-label {
+        color: var(--highlight);
+      }
+      #contact .section-label::after {
+        background: var(--highlight);
+      }
+      #contact .section-title {
+        color: #fff;
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: start;
+      }
+      .contact-cta {
+        font-size: 1rem;
+        line-height: 1.7;
+        opacity: 0.85;
+        margin-bottom: 2rem;
+      }
+      .contact-items {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: var(--radius);
+        padding: 1.1rem 1.4rem;
+        text-decoration: none;
+        color: #fff;
+        transition: all var(--transition);
+      }
+      .contact-item:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateX(4px);
+      }
+      .contact-item-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 1.1rem;
+      }
+      .contact-item-info strong {
+        display: block;
+        font-size: 0.8rem;
+        opacity: 0.65;
+        margin-bottom: 0.1rem;
+        font-weight: 500;
+      }
+      .contact-item-info span {
+        font-size: 0.95rem;
+        font-weight: 500;
+      }
+      .contact-aside {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: var(--radius);
+        padding: 2.5rem;
+      }
+      .contact-aside h3 {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.4rem;
+        margin-bottom: 0.75rem;
+        color: #fff;
+      }
+      .contact-aside p {
+        font-size: 0.9rem;
+        opacity: 0.75;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+      }
+      .btn-white {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.8rem 1.8rem;
+        background: #fff;
+        color: var(--accent);
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.9rem;
+        transition: all var(--transition);
+      }
+      .btn-white:hover {
+        background: var(--bg);
+        transform: translateY(-1px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      }
+
+      footer {
+        background: #0d2137;
+        color: rgba(255, 255, 255, 0.5);
+        text-align: center;
+        padding: 1.8rem;
+        font-size: 0.8rem;
+        letter-spacing: 0.03em;
+      }
+      footer a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+      }
+
+      /* ANIMATIONS */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .fade-up.visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 900px) {
+        #hero {
+          grid-template-columns: 1fr;
+          padding-top: 3rem;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+        .edu-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 680px) {
+        .nav-links {
+          display: none;
+        }
+        .hamburger {
+          display: flex;
+        }
+        .hero-buttons {
+          flex-direction: column;
+        }
+        .btn-primary,
+        .btn-outline {
+          justify-content: center;
+        }
+        .lang-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="#hero" class="nav-logo">OM</a>
+      <ul class="nav-links">
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+        <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+        <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        <li>
+          <div class="lang-switch">
+            <button class="lang-btn active" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" onclick="setLang('de')">DE</button>
+          </div>
+        </li>
+      </ul>
+      <button class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#about" onclick="closeMenu()" data-i18n="nav.about">About</a>
+      <a href="#skills" onclick="closeMenu()" data-i18n="nav.skills">Skills</a>
+      <a href="#experience" onclick="closeMenu()" data-i18n="nav.experience"
+        >Experience</a
+      >
+      <a href="#projects" onclick="closeMenu()" data-i18n="nav.projects"
+        >Projects</a
+      >
+      <a href="#contact" onclick="closeMenu()" data-i18n="nav.contact"
+        >Contact</a
+      >
+      <div class="lang-switch">
+        <button
+          class="lang-btn active"
+          onclick="
+            setLang('en');
+            closeMenu();
+          "
+        >
+          EN
+        </button>
+        <button
+          class="lang-btn"
+          onclick="
+            setLang('de');
+            closeMenu();
+          "
+        >
+          DE
+        </button>
+      </div>
+    </div>
+
+    <main>
+      <!-- HERO -->
+      <section id="hero">
+        <div class="hero-text fade-up">
+          <div class="hero-label" data-i18n="hero.label">
+            Mechatronics Engineer
+          </div>
+          <h1 class="hero-name">Omar Muhrat</h1>
+          <p class="hero-title" data-i18n="hero.title">
+            Automation &amp; Robotics Specialist
+          </p>
+          <p class="hero-tagline" data-i18n="hero.tagline">
+            Engineering intelligent systems — from PLC automation to industrial
+            robotics. Passionate about building the next generation of smart
+            manufacturing solutions.
+          </p>
+          <div class="hero-location">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            Bremen, Germany
+          </div>
+          <div class="hero-buttons">
+            <a href="#contact" class="btn-primary">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+              <span data-i18n="hero.cta">Get in Touch</span>
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener"
+              class="btn-outline"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"
+                />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+        <div class="hero-photo fade-up" style="transition-delay: 0.15s">
+          <div class="photo-frame">
+            <img src="assets/omar.webp" alt="Omar Muhrat" class="profile-img" />
+            <div class="photo-badge">IHK 2026</div>
+          </div>
+        </div>
+        <style>
+          .photo-frame {
+            width: 200px;
+            height: 360px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+          }
+
+          .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            /* THIS is the key for your photo */
+            object-position: 50% 18%;
+          }
+
+          .photo-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: #000;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+          }
+        </style>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about">
+        <div class="container">
+          <div class="section-header fade-up">
+            <div class="section-label" data-i18n="about.label">About Me</div>
+            <h2 class="section-title" data-i18n="about.title">
+              Engineer. Innovator. Problem-Solver.
+            </h2>
+          </div>
+          <div class="about-grid">
+            <div class="about-text fade-up">
+              <p data-i18n="about.p1">
+                I am a Mechatronics Engineer with a strong academic foundation —
+                holding both a Bachelor's degree in Mechatronics and a Master's
+                in Business Engineering (Energy) from TU Berlin. My professional
+                journey spans automation, robotics, renewable energy, and IT
+                consulting.
+              </p>
+              <p data-i18n="about.p2">
+                Currently, I am deepening my expertise through advanced IHK
+                training in automation and robotics, with a focus on PLC
+                programming (SPS), Python scripting for industrial applications,
+                and simulation tools like KUKA Sim and Factory IO.
+              </p>
+              <p data-i18n="about.p3">
+                I thrive at the intersection of hardware and software —
+                designing control systems, programming automation sequences, and
+                bringing intelligent engineering solutions to life. I am
+                actively seeking opportunities in industrial automation,
+                robotics engineering, or smart manufacturing in Germany.
+              </p>
+            </div>
+            <div class="about-stats fade-up" style="transition-delay: 0.15s">
+              <div class="stat-card">
+                <div class="stat-icon">🎓</div>
+                <div class="stat-info">
+                  <strong data-i18n="about.stat1.title"
+                    >Dual Academic Degrees</strong
+                  ><span data-i18n="about.stat1.desc"
+                    >B.Sc. Mechatronics + M.Sc. Business Engineering</span
+                  >
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon">🤖</div>
+                <div class="stat-info">
+                  <strong data-i18n="about.stat2.title"
+                    >Advanced IHK Training</strong
+                  ><span data-i18n="about.stat2.desc"
+                    >Automation, Robotics & Industrial Programming</span
+                  >
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon">🌍</div>
+                <div class="stat-info">
+                  <strong data-i18n="about.stat3.title"
+                    >International Experience</strong
+                  ><span data-i18n="about.stat3.desc"
+                    >Germany · Egypt · Cross-sector Engineering</span
+                  >
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon">⚡</div>
+                <div class="stat-info">
+                  <strong data-i18n="about.stat4.title"
+                    >Renewable Energy Background</strong
+                  ><span data-i18n="about.stat4.desc"
+                    >PV Systems, E-Mobility, Energy Policy</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills">
+        <div class="container">
+          <div class="section-header fade-up">
+            <div class="section-label" data-i18n="skills.label">
+              Technical Skills
+            </div>
+            <h2 class="section-title" data-i18n="skills.title">
+              Core Competencies
+            </h2>
+          </div>
+          <div class="skills-grid">
+            <div class="skill-card fade-up">
+              <div class="skill-icon">🐍</div>
+              <div class="skill-name">Python</div>
+              <div class="skill-desc" data-i18n="skills.python">
+                Scripting for automation, data processing, and industrial
+                control applications.
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 78%"></div>
+              </div>
+            </div>
+            <div class="skill-card fade-up" style="transition-delay: 0.07s">
+              <div class="skill-icon">⚙️</div>
+              <div class="skill-name">PLC / SPS</div>
+              <div class="skill-desc" data-i18n="skills.plc">
+                Ladder logic, function block diagrams, and sequential
+                programming for industrial automation.
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 82%"></div>
+              </div>
+            </div>
+            <div class="skill-card fade-up" style="transition-delay: 0.14s">
+              <div class="skill-icon">🦾</div>
+              <div class="skill-name">KUKA Simulation</div>
+              <div class="skill-desc" data-i18n="skills.kuka">
+                Robot path planning, KRL programming, and cell simulation using
+                KUKA.Sim.
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 70%"></div>
+              </div>
+            </div>
+            <div class="skill-card fade-up" style="transition-delay: 0.21s">
+              <div class="skill-icon">🏭</div>
+              <div class="skill-name">Factory IO</div>
+              <div class="skill-desc" data-i18n="skills.factoryio">
+                3D virtual factory simulation for testing PLC programs and
+                automation workflows.
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 75%"></div>
+              </div>
+            </div>
+            <div class="skill-card fade-up" style="transition-delay: 0.28s">
+              <div class="skill-icon">💼</div>
+              <div class="skill-name">MS Office</div>
+              <div class="skill-desc" data-i18n="skills.msoffice">
+                Professional documentation, technical reporting, and data
+                analysis with Excel.
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 90%"></div>
+              </div>
+            </div>
+            <div class="skill-card fade-up" style="transition-delay: 0.35s">
+              <div class="skill-icon">🔌</div>
+              <div class="skill-name" data-i18n="skills.controls.name">
+                Control Systems
+              </div>
+              <div class="skill-desc" data-i18n="skills.controls.desc">
+                Sensor integration, actuator control, feedback loops, and EV
+                charging infrastructure design.
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 72%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience">
+        <div class="container">
+          <div class="section-header fade-up">
+            <div class="section-label" data-i18n="exp.label">
+              Work Experience
+            </div>
+            <h2 class="section-title" data-i18n="exp.title">
+              Professional History
+            </h2>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item fade-up">
+              <div class="timeline-dot current"></div>
+              <div class="timeline-card">
+                <div class="timeline-top">
+                  <div class="timeline-role" data-i18n="exp.job1.role">
+                    Mainframe Consultant (IT)
+                  </div>
+                  <div class="timeline-period">2023</div>
+                </div>
+                <div class="timeline-company">
+                  S&amp;N Invent GmbH · Hamburg, Germany
+                </div>
+                <ul class="timeline-bullets">
+                  <li data-i18n="exp.job1.b1">
+                    Performed targeted module adjustments and system
+                    modifications on mainframe platforms, ensuring operational
+                    stability.
+                  </li>
+                  <li data-i18n="exp.job1.b2">
+                    Executed rigorous testing procedures and quality assurance
+                    protocols, identifying and resolving technical anomalies.
+                  </li>
+                  <li data-i18n="exp.job1.b3">
+                    Created precise technical documentation covering system
+                    changes, test results, and operational procedures.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="timeline-item fade-up">
+              <div class="timeline-dot"></div>
+              <div class="timeline-card">
+                <div class="timeline-top">
+                  <div class="timeline-role" data-i18n="exp.job2.role">
+                    Mechatronics Engineer
+                  </div>
+                  <div class="timeline-period">2021 – 2023</div>
+                </div>
+                <div class="timeline-company">
+                  HadSol GmbH · Bremen, Germany
+                </div>
+                <ul class="timeline-bullets">
+                  <li data-i18n="exp.job2.b1">
+                    Led the development of a UAV (drone) material testing system
+                    — integrating sensors, electronics, and embedded control for
+                    structural analysis.
+                  </li>
+                  <li data-i18n="exp.job2.b2">
+                    Designed and implemented advanced control systems for
+                    precision motion and real-time monitoring of engineering
+                    parameters.
+                  </li>
+                  <li data-i18n="exp.job2.b3">
+                    Engineered EV wallbox charging infrastructure solutions,
+                    contributing to Germany's growing e-mobility ecosystem.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="timeline-item fade-up">
+              <div class="timeline-dot"></div>
+              <div class="timeline-card">
+                <div class="timeline-top">
+                  <div class="timeline-role" data-i18n="exp.job3.role">
+                    Engineering Intern
+                  </div>
+                  <div class="timeline-period" data-i18n="exp.job3.period">
+                    Internship
+                  </div>
+                </div>
+                <div class="timeline-company" data-i18n="exp.job3.company">
+                  Renewable Energy Center · Cairo, Egypt
+                </div>
+                <ul class="timeline-bullets">
+                  <li data-i18n="exp.job3.b1">
+                    Contributed to the design and analysis of photovoltaic (PV)
+                    systems, gaining hands-on experience in solar energy
+                    integration and performance optimization.
+                  </li>
+                  <li data-i18n="exp.job3.b2">
+                    Conducted research and policy analysis for renewable energy
+                    frameworks, assessing regulatory environments for clean
+                    energy deployment.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="timeline-item fade-up">
+              <div class="timeline-dot current"></div>
+              <div class="timeline-card">
+                <div class="timeline-top">
+                  <div class="timeline-role" data-i18n="exp.job1.role">
+                    Ingenieur für Betrieb und Kontrolle 
+                  </div>
+                  <div class="timeline-period">2015-2016</div>
+                </div>
+                <div class="timeline-company">
+                  Ministerium für Stromwirtschaft · Homs, Syria
+                </div>
+                <ul class="timeline-bullets">
+                  <li data-i18n="exp.job1.b1">
+                    Überwachung, Kontrolle und Wartung von Gas- und Dampfturbinen in einem zentralen Kraftwerk.
+                  </li>
+                  <li data-i18n="exp.job1.b2">
+                    Unterstützung des sicheren und effizienten Betriebs von Energieerzeugungsanlagen.
+                  </li>
+                  <li data-i18n="exp.job1.b3">
+                    Created precise technical documentation covering system
+                    changes, test results, and operational procedures.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section id="education">
+        <div class="container">
+          <div class="section-header fade-up">
+            <div class="section-label" data-i18n="edu.label">Education</div>
+            <h2 class="section-title" data-i18n="edu.title">
+              Academic Background
+            </h2>
+          </div>
+          <div class="edu-grid">
+            <div class="edu-card fade-up">
+              <div class="edu-icon">🎓</div>
+              <div class="edu-degree" data-i18n="edu.master.degree">
+                Master of Business Engineering – Energy
+              </div>
+              <div class="edu-school">Technische Universität Berlin</div>
+              <p
+                style="
+                  font-size: 0.85rem;
+                  color: var(--text-secondary);
+                  margin-top: 0.5rem;
+                  line-height: 1.6;
+                "
+                data-i18n="edu.master.desc"
+              >
+                Interdisciplinary programme combining engineering with business
+                strategy and energy systems management. Focus on sustainable
+                energy economics and industrial applications.
+              </p>
+              <span class="edu-year">TU Berlin</span>
+            </div>
+            <div class="edu-card fade-up" style="transition-delay: 0.1s">
+              <div class="edu-icon">⚙️</div>
+              <div class="edu-degree" data-i18n="edu.bachelor.degree">
+                Bachelor of Science – Mechatronics Engineering
+              </div>
+              <div class="edu-school" data-i18n="edu.bachelor.school">
+                Al Baath University
+              </div>
+              <p
+                style="
+                  font-size: 0.85rem;
+                  color: var(--text-secondary);
+                  margin-top: 0.5rem;
+                  line-height: 1.6;
+                "
+                data-i18n="edu.bachelor.desc"
+              >
+                Comprehensive programme covering mechanical systems,
+                electronics, embedded programming, and control theory. Strong
+                foundation in robotics and automation principles.
+              </p>
+              <span class="edu-year" data-i18n="edu.bachelor.school"
+                >Al Baath University</span
+              >
+            </div>
+          </div>
+          <div class="edu-card edu-card-wide fade-up">
+            <div class="edu-inner">
+              <div style="font-size: 2rem; flex-shrink: 0">📜</div>
+              <div>
+                <div class="edu-degree" data-i18n="edu.ihk.degree">
+                  Advanced Training: Automation & Robotics (IHK)
+                </div>
+                <div class="edu-school" data-i18n="edu.ihk.school">
+                  IHK – Chamber of Commerce and Industry · 
+                </div>
+                <p
+                  style="
+                    font-size: 0.85rem;
+                    color: var(--text-secondary);
+                    margin-top: 0.5rem;
+                    line-height: 1.6;
+                  "
+                  data-i18n="edu.ihk.desc"
+                >
+                  Intensive professional programme covering PLC programming
+                  (SPS), Tia Portal for industrial applications, industrial robot
+                  programming, and KUKA simulation. Practical lab training with
+                  real automation hardware.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects">
+        <div class="container">
+          <div class="section-header fade-up">
+            <div class="section-label" data-i18n="proj.label">Projects</div>
+            <h2 class="section-title" data-i18n="proj.title">
+              Engineering Projects
+            </h2>
+          </div>
+          <div class="projects-grid">
+            <div class="project-card fade-up">
+              <div class="project-icon">🏭</div>
+              <div class="project-tag">PLC / Automation</div>
+              <div class="project-title" data-i18n="proj.p1.title">
+                PLC-Driven Factory Automation Cell
+              </div>
+              <div class="project-desc" data-i18n="proj.p1.desc">
+                Designed and programmed a fully automated production cell using
+                Factory IO's 3D simulation environment. Developed structured PLC
+                logic in ladder and function block diagrams to control
+                conveyors, sensors, sorting stations, and actuators — simulating
+                a complete industrial manufacturing workflow from raw input to
+                packaged output.
+              </div>
+              <div class="project-stack">
+                <span class="stack-tag">Factory IO</span
+                ><span class="stack-tag">PLC / SPS</span
+                ><span class="stack-tag">Ladder Logic</span
+                ><span class="stack-tag">FBD</span>
+              </div>
+            </div>
+            <div class="project-card fade-up" style="transition-delay: 0.1s">
+              <div class="project-icon">🦾</div>
+              <div class="project-tag">Robotics</div>
+              <div class="project-title" data-i18n="proj.p2.title">
+                KUKA Robot Cell Simulation & Path Optimization
+              </div>
+              <div class="project-desc" data-i18n="proj.p2.desc">
+                Built a virtual robot work cell using KUKA.Sim, programming
+                complex multi-axis motion sequences with KRL. Optimized
+                pick-and-place trajectories for cycle time reduction, integrated
+                collision detection, and validated the cell layout for
+                deployment readiness — demonstrating industrial robotics
+                competencies applicable to modern production environments.
+              </div>
+              <div class="project-stack">
+                <span class="stack-tag">KUKA.Sim</span
+                ><span class="stack-tag">KRL</span
+                ><span class="stack-tag">Path Planning</span
+                ><span class="stack-tag">Robot Programming</span>
+              </div>
+            </div>
+            <div class="project-card fade-up" style="transition-delay: 0.2s">
+              <div class="project-icon">🚁</div>
+              <div class="project-tag">Embedded Systems</div>
+              <div class="project-title" data-i18n="proj.p3.title">
+                UAV-Based Material Testing System
+              </div>
+              <div class="project-desc" data-i18n="proj.p3.desc">
+                Engineered a drone-mounted structural material testing platform
+                at HadSol, integrating vibration sensors, data acquisition
+                hardware, and a custom control interface. The system enabled
+                non-destructive testing (NDT) of materials in hard-to-reach
+                locations, combining mechatronics design with embedded control
+                systems and real-time data analysis.
+              </div>
+              <div class="project-stack">
+                <span class="stack-tag">UAV / Drones</span
+                ><span class="stack-tag">Sensor Integration</span
+                ><span class="stack-tag">Embedded Systems</span
+                ><span class="stack-tag">NDT</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LANGUAGES -->
+      <section id="languages">
+        <div class="container">
+          <div class="section-header fade-up">
+            <div class="section-label" data-i18n="lang.label">Languages</div>
+            <h2 class="section-title" data-i18n="lang.title">
+              Communication Skills
+            </h2>
+          </div>
+          <div class="lang-grid">
+            <div class="lang-card fade-up">
+              <div class="lang-flag">🇸🇦</div>
+              <div class="lang-name" data-i18n="lang.arabic">Arabic</div>
+              <div class="lang-level" data-i18n="lang.arabic.level">Native</div>
+              <div class="lang-dots">
+                <div class="lang-dot filled"></div>
+                <div class="lang-dot filled"></div>
+                <div class="lang-dot filled"></div>
+                <div class="lang-dot filled"></div>
+                <div class="lang-dot filled"></div>
+              </div>
+            </div>
+            <div class="lang-card fade-up" style="transition-delay: 0.08s">
+              <div class="lang-flag">🇬🇧</div>
+              <div class="lang-name" data-i18n="lang.english">English</div>
+              <div class="lang-level" data-i18n="lang.english.level">
+                Fluent (C1)
+              </div>
+              <div class="lang-dots">
+                <div class="lang-dot filled"></div>
+                <div class="lang-dot filled"></div>
+                <div class="lang-dot filled"></div>
+                <div class="lang-dot filled"></div>
+                <div class="lang-dot"></div>
+              </div>
+            </div>
+            <div class="lang-card fade-up" style="transition-delay: 0.16s">
+              <div class="lang-flag">🇩🇪</div>
+              <div class="lang-name" data-i18n="lang.german">German</div>
+              <div class="lang-level" data-i18n="lang.german.level">
+                Advanced (B2/C1)
+              </div>
+              <div class="lang-dots">
+                <div class="lang-dot filled"></div>
+                <div class="lang-dot filled"></div>
+                <div class="lang-dot filled"></div>
+                <div class="lang-dot filled"></div>
+                <div class="lang-dot"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <div class="container">
+          <div class="section-header fade-up">
+            <div class="section-label" data-i18n="contact.label">Contact</div>
+            <h2 class="section-title" data-i18n="contact.title">
+              Let's Work Together
+            </h2>
+          </div>
+          <div class="contact-grid">
+            <div class="fade-up">
+              <p class="contact-cta" data-i18n="contact.cta">
+                I am currently open to new opportunities in industrial
+                automation, robotics engineering, and mechatronics. Whether you
+                have a project, a role, or simply want to connect — I would be
+                glad to hear from you.
+              </p>
+              <div class="contact-items">
+                <a class="contact-item" href="mailto:omar.muhrat@hotmail.com"
+                  ><div class="contact-item-icon">✉️</div>
+                  <div class="contact-item-info">
+                    <strong data-i18n="contact.emailLabel">Email</strong
+                    ><span>omar.muhrat@hotmail.com</span>
+                  </div></a
+                >
+                <a class="contact-item" href="tel:+49"
+                  ><div class="contact-item-icon">📞</div>
+                  <div class="contact-item-info">
+                    <strong data-i18n="contact.phoneLabel">Phone</strong
+                    ><span>+49 176663702941</span>
+                  </div></a
+                >
+                <a
+                  class="contact-item"
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener"
+                  ><div class="contact-item-icon">💼</div>
+                  <div class="contact-item-info">
+                    <strong>LinkedIn</strong
+                    ><span>linkedin.com/in/omar-muhrat</span>
+                  </div></a
+                >
+                <div class="contact-item" style="cursor: default">
+                  <div class="contact-item-icon">📍</div>
+                  <div class="contact-item-info">
+                    <strong data-i18n="contact.locationLabel">Location</strong
+                    ><span>Bremen, Germany · Available Nationwide</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="fade-up contact-aside" style="transition-delay: 0.15s">
+              <h3 data-i18n="contact.cta2.title">
+                Ready to Engineer the Future?
+              </h3>
+              <p data-i18n="contact.cta2.desc">
+                I bring a rare combination of academic depth, hands-on
+                engineering experience, and cross-sector versatility. Let's
+                discuss how I can contribute to your team or project.
+              </p>
+              <a href="mailto:omar.muhrat@email.com" class="btn-white">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                <span data-i18n="contact.cta2.btn">Send an Email</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        © 2024 Omar Muhrat · Bremen, Germany ·
+        <a href="mailto:omar.muhrat@hotmail.com">omar.muhrat@hotmail.com</a>
+      </p>
+    </footer>
+
+    <script>
+      const T = {
+        en: {
+          "nav.about": "About",
+          "nav.skills": "Skills",
+          "nav.experience": "Experience",
+          "nav.projects": "Projects",
+          "nav.contact": "Contact",
+          "hero.label": "Mechatronics Engineer",
+          "hero.title": "Automation & Robotics Specialist",
+          "hero.tagline":
+            "Engineering intelligent systems — from PLC automation to industrial robotics. Passionate about building the next generation of smart manufacturing solutions.",
+          "hero.cta": "Get in Touch",
+          "hero.photoPlaceholder": "Replace with your professional photo",
+          "about.label": "About Me",
+          "about.title": "Engineer. Innovator. Problem-Solver.",
+          "about.p1":
+            "I am a Mechatronics Engineer with a strong academic foundation — holding both a Bachelor's degree in Mechatronics and a Master's in Business Engineering (Energy) from TU Berlin. My professional journey spans automation, robotics, renewable energy, and IT consulting.",
+          "about.p2":
+            "Currently, I am deepening my expertise through advanced IHK training in automation and robotics, with a focus on PLC programming (SPS), Python scripting for industrial applications, and simulation tools like KUKA Sim and Factory IO.",
+          "about.p3":
+            "I thrive at the intersection of hardware and software — designing control systems, programming automation sequences, and bringing intelligent engineering solutions to life. I am actively seeking opportunities in industrial automation, robotics engineering, or smart manufacturing in Germany.",
+          "about.stat1.title": "Dual Academic Degrees",
+          "about.stat1.desc": "B.Sc. Mechatronics + M.Sc. Business Engineering",
+          "about.stat2.title": "Advanced IHK Training",
+          "about.stat2.desc": "Automation, Robotics & Industrial Programming",
+          "about.stat3.title": "International Experience",
+          "about.stat3.desc": "Germany · Egypt · Cross-sector Engineering",
+          "about.stat4.title": "Renewable Energy Background",
+          "about.stat4.desc": "PV Systems, E-Mobility, Energy Policy",
+          "skills.label": "Technical Skills",
+          "skills.title": "Core Competencies",
+          "skills.python":
+            "Scripting for automation, data processing, and industrial control applications.",
+          "skills.plc":
+            "Ladder logic, function block diagrams, and sequential programming for industrial automation.",
+          "skills.kuka":
+            "Robot path planning, KRL programming, and cell simulation using KUKA.Sim.",
+          "skills.factoryio":
+            "3D virtual factory simulation for testing PLC programs and automation workflows.",
+          "skills.msoffice":
+            "Professional documentation, technical reporting, and data analysis with Excel.",
+          "skills.controls.name": "Control Systems",
+          "skills.controls.desc":
+            "Sensor integration, actuator control, feedback loops, and EV charging infrastructure design.",
+          "exp.label": "Work Experience",
+          "exp.title": "Professional History",
+          "exp.job1.role": "Mainframe Consultant (IT)",
+          "exp.job1.b1":
+            "Performed targeted module adjustments and system modifications on mainframe platforms, ensuring operational stability.",
+          "exp.job1.b2":
+            "Executed rigorous testing procedures and quality assurance protocols, identifying and resolving technical anomalies.",
+          "exp.job1.b3":
+            "Created precise technical documentation covering system changes, test results, and operational procedures.",
+          "exp.job2.role": "Mechatronics Engineer",
+          "exp.job2.b1":
+            "Led the development of a UAV (drone) material testing system — integrating sensors, electronics, and embedded control for structural analysis.",
+          "exp.job2.b2":
+            "Designed and implemented advanced control systems for precision motion and real-time monitoring of engineering parameters.",
+          "exp.job2.b3":
+            "Engineered EV wallbox charging infrastructure solutions, contributing to Germany's growing e-mobility ecosystem.",
+          "exp.job3.role": "Engineering Intern",
+          "exp.job3.period": "Internship",
+          "exp.job3.company": "Renewable Energy Center · Cairo, Egypt",
+          "exp.job3.b1":
+            "Contributed to the design and analysis of photovoltaic (PV) systems, gaining hands-on experience in solar energy integration and performance optimization.",
+          "exp.job3.b2":
+            "Conducted research and policy analysis for renewable energy frameworks, assessing regulatory environments for clean energy deployment.",
+          "edu.label": "Education",
+          "edu.title": "Academic Background",
+          "edu.master.degree": "Master of Business Engineering – Energy",
+          "edu.master.desc":
+            "Interdisciplinary programme combining engineering with business strategy and energy systems management. Focus on sustainable energy economics and industrial applications.",
+          "edu.bachelor.degree":
+            "Bachelor of Science – Mechatronics Engineering",
+          "edu.bachelor.school": "Al Baath University",
+          "edu.bachelor.desc":
+            "Comprehensive programme covering mechanical systems, electronics, embedded programming, and control theory. Strong foundation in robotics and automation principles.",
+          "edu.ihk.degree": "Advanced Training: Automation & Robotics (IHK)",
+          "edu.ihk.school":
+            "IHK – Chamber of Commerce and Industry · Currently in progress",
+          "edu.ihk.desc":
+            "Intensive professional programme covering PLC programming (SPS), Python for industrial applications, industrial robot programming, and KUKA simulation. Practical lab training with real automation hardware.",
+          "proj.label": "Projects",
+          "proj.title": "Engineering Projects",
+          "proj.p1.title": "PLC-Driven Factory Automation Cell",
+          "proj.p1.desc":
+            "Designed and programmed a fully automated production cell using Factory IO's 3D simulation environment. Developed structured PLC logic in ladder and function block diagrams to control conveyors, sensors, sorting stations, and actuators — simulating a complete industrial manufacturing workflow.",
+          "proj.p2.title": "KUKA Robot Cell Simulation & Path Optimization",
+          "proj.p2.desc":
+            "Built a virtual robot work cell using KUKA.Sim, programming complex multi-axis motion sequences with KRL. Optimized pick-and-place trajectories for cycle time reduction, integrated collision detection, and validated the cell layout for deployment readiness.",
+          "proj.p3.title": "UAV-Based Material Testing System",
+          "proj.p3.desc":
+            "Engineered a drone-mounted structural material testing platform at HadSol, integrating vibration sensors, data acquisition hardware, and a custom control interface. The system enabled non-destructive testing (NDT) of materials in hard-to-reach locations.",
+          "lang.label": "Languages",
+          "lang.title": "Communication Skills",
+          "lang.arabic": "Arabic",
+          "lang.arabic.level": "Native",
+          "lang.english": "English",
+          "lang.english.level": "Fluent (C1)",
+          "lang.german": "German",
+          "lang.german.level": "Advanced (B2/C1)",
+          "contact.label": "Contact",
+          "contact.title": "Let's Work Together",
+          "contact.cta":
+            "I am currently open to new opportunities in industrial automation, robotics engineering, and mechatronics. Whether you have a project, a role, or simply want to connect — I would be glad to hear from you.",
+          "contact.emailLabel": "Email",
+          "contact.phoneLabel": "Phone",
+          "contact.locationLabel": "Location",
+          "contact.cta2.title": "Ready to Engineer the Future?",
+          "contact.cta2.desc":
+            "I bring a rare combination of academic depth, hands-on engineering experience, and cross-sector versatility. Let's discuss how I can contribute to your team or project.",
+          "contact.cta2.btn": "Send an Email",
+        },
+        de: {
+          "nav.about": "Über mich",
+          "nav.skills": "Kenntnisse",
+          "nav.experience": "Erfahrung",
+          "nav.projects": "Projekte",
+          "nav.contact": "Kontakt",
+          "hero.label": "Mechatronik-Ingenieur",
+          "hero.title": "Spezialist für Automatisierung & Robotik",
+          "hero.tagline":
+            "Entwicklung intelligenter Systeme – von der SPS-Automatisierung bis hin zur Industrierobotik. Leidenschaftlich für die nächste Generation smarter Fertigungslösungen.",
+          "hero.cta": "Kontakt aufnehmen",
+          "hero.photoPlaceholder":
+            "Ersetzen Sie dies durch Ihr professionelles Foto",
+          "about.label": "Über mich",
+          "about.title": "Ingenieur. Innovator. Problemlöser.",
+          "about.p1":
+            "Ich bin Mechatronik-Ingenieur mit einer soliden akademischen Grundlage – sowohl mit einem Bachelor-Abschluss in Mechatronik als auch einem Master in Wirtschaftsingenieurwesen (Energie) der TU Berlin. Mein beruflicher Werdegang umfasst Automatisierung, Robotik, erneuerbare Energien und IT-Consulting.",
+          "about.p2":
+            "Derzeit vertiefe ich meine Kenntnisse durch eine IHK-Weiterbildung in Automatisierung und Robotik, mit Schwerpunkt auf SPS-Programmierung, Python für industrielle Anwendungen sowie Simulationswerkzeugen wie KUKA Sim und Factory IO.",
+          "about.p3":
+            "Ich arbeite an der Schnittstelle von Hardware und Software – ich entwerfe Steuerungssysteme, programmiere Automatisierungsabläufe und bringe intelligente Ingenieurlösungen zum Leben. Ich suche aktiv nach Möglichkeiten in der Industrieautomation, Robotik oder Smart Manufacturing in Deutschland.",
+          "about.stat1.title": "Zwei akademische Abschlüsse",
+          "about.stat1.desc":
+            "B.Sc. Mechatronik + M.Sc. Wirtschaftsingenieurwesen",
+          "about.stat2.title": "IHK-Weiterbildung",
+          "about.stat2.desc":
+            "Automatisierung, Robotik & Industrielle Programmierung",
+          "about.stat3.title": "Internationale Erfahrung",
+          "about.stat3.desc":
+            "Deutschland · Ägypten · Branchenübergreifendes Engineering",
+          "about.stat4.title": "Hintergrund Erneuerbare Energien",
+          "about.stat4.desc": "PV-Anlagen, E-Mobilität, Energiepolitik",
+          "skills.label": "Technische Kenntnisse",
+          "skills.title": "Kernkompetenzen",
+          "skills.python":
+            "Skripterstellung für Automatisierung, Datenverarbeitung und industrielle Steuerungsanwendungen.",
+          "skills.plc":
+            "Kontaktplan, Funktionsbausteindiagramme und Ablaufprogrammierung für die Industrieautomation.",
+          "skills.kuka":
+            "Roboter-Bahnplanung, KRL-Programmierung und Zellsimulation mit KUKA.Sim.",
+          "skills.factoryio":
+            "3D-Fabriksimulation zum Testen von SPS-Programmen und Automatisierungsabläufen.",
+          "skills.msoffice":
+            "Professionelle Dokumentation, technische Berichte und Datenanalyse mit Excel.",
+          "skills.controls.name": "Steuerungstechnik",
+          "skills.controls.desc":
+            "Sensorintegration, Aktorsteuerung, Regelkreise und Entwurf von E-Mobilitäts-Ladeinfrastruktur.",
+          "exp.label": "Berufserfahrung",
+          "exp.title": "Beruflicher Werdegang",
+          "exp.job1.role": "Mainframe-Consultant (IT)",
+          "exp.job1.b1":
+            "Durchführung gezielter Modulanpassungen und Systemmodifikationen auf Mainframe-Plattformen zur Sicherstellung der Betriebsstabilität.",
+          "exp.job1.b2":
+            "Durchführung strenger Testverfahren und Qualitätssicherungsmaßnahmen zur Identifikation und Behebung technischer Anomalien.",
+          "exp.job1.b3":
+            "Erstellung präziser technischer Dokumentationen zu Systemänderungen, Testergebnissen und Betriebsabläufen.",
+          "exp.job2.role": "Mechatronik-Ingenieur",
+          "exp.job2.b1":
+            "Leitung der Entwicklung eines UAV-basierten Werkstoffprüfsystems – Integration von Sensoren, Elektronik und eingebetteter Steuerung für die Strukturanalyse.",
+          "exp.job2.b2":
+            "Entwurf und Implementierung fortschrittlicher Steuerungssysteme für Präzisionsbewegungen und Echtzeitüberwachung.",
+          "exp.job2.b3":
+            "Entwicklung von EV-Wallbox-Ladeinfrastrukturlösungen als Beitrag zum wachsenden E-Mobilitäts-Ökosystem in Deutschland.",
+          "exp.job3.role": "Ingenieurpraktikum",
+          "exp.job3.period": "Praktikum",
+          "exp.job3.company":
+            "Zentrum für Erneuerbare Energien · Kairo, Ägypten",
+          "exp.job3.b1":
+            "Mitwirkung an Entwurf und Analyse von Photovoltaikanlagen (PV) sowie praktische Erfahrung in der Solarenergieintegration und Leistungsoptimierung.",
+          "exp.job3.b2":
+            "Durchführung von Forschungs- und Politikanalysen zu Rahmenbedingungen für erneuerbare Energien.",
+          "edu.label": "Ausbildung",
+          "edu.title": "Akademischer Hintergrund",
+          "edu.master.degree": "Master Wirtschaftsingenieurwesen – Energie",
+          "edu.master.desc":
+            "Interdisziplinäres Studium, das Ingenieurwissenschaften mit Unternehmensstrategie und Energiesystemmanagement verbindet. Schwerpunkt auf nachhaltiger Energiewirtschaft und industriellen Anwendungen.",
+          "edu.bachelor.degree": "Bachelor of Science – Mechatronik",
+          "edu.bachelor.school": "Al Baath Universität",
+          "edu.bachelor.desc":
+            "Umfassendes Ingenieurstudium mit Schwerpunkten auf mechanischen Systemen, Elektronik, eingebetteter Programmierung und Regelungstheorie. Solide Grundlage in Robotik und Automatisierungsprinzipien.",
+          "edu.ihk.degree": "Weiterbildung: Automatisierung & Robotik (IHK)",
+          "edu.ihk.school":
+            "IHK – Industrie- und Handelskammer · Aktuell in Ausbildung",
+          "edu.ihk.desc":
+            "Intensives Berufsbildungsprogramm mit SPS-Programmierung, Python für industrielle Anwendungen, Industrieroboterprogrammierung und KUKA-Simulation. Praktische Laborausbildung mit echter Automatisierungshardware.",
+          "proj.label": "Projekte",
+          "proj.title": "Ingenieurprojekte",
+          "proj.p1.title": "SPS-gesteuerte Fabrikautomationszelle",
+          "proj.p1.desc":
+            "Entwurf und Programmierung einer vollautomatisierten Produktionszelle in der 3D-Simulationsumgebung von Factory IO. Entwicklung strukturierter SPS-Logik in Kontaktplan und Funktionsbausteindiagrammen zur Steuerung von Förderbändern, Sensoren und Sortieranlagen.",
+          "proj.p2.title": "KUKA-Roboterzellsimulation & Bahnoptimierung",
+          "proj.p2.desc":
+            "Aufbau einer virtuellen Roboterarbeitszelle mit KUKA.Sim, Programmierung komplexer mehrachsiger Bewegungsabläufe mit KRL. Optimierung von Pick-and-Place-Trajektorien zur Reduzierung der Zykluszeit sowie Integration von Kollisionserkennung.",
+          "proj.p3.title": "UAV-basiertes Werkstoffprüfsystem",
+          "proj.p3.desc":
+            "Entwicklung einer drohnenmontierten Werkstoffprüfplattform bei HadSol mit Integration von Vibrationssensoren, Datenerfassungshardware und einer maßgeschneiderten Steuerschnittstelle. Das System ermöglichte die zerstörungsfreie Prüfung (ZfP) an schwer zugänglichen Stellen.",
+          "lang.label": "Sprachen",
+          "lang.title": "Sprachkenntnisse",
+          "lang.arabic": "Arabisch",
+          "lang.arabic.level": "Muttersprache",
+          "lang.english": "Englisch",
+          "lang.english.level": "Fließend (C1)",
+          "lang.german": "Deutsch",
+          "lang.german.level": "Fortgeschritten (B2/C1)",
+          "contact.label": "Kontakt",
+          "contact.title": "Lassen Sie uns zusammenarbeiten",
+          "contact.cta":
+            "Ich bin derzeit offen für neue Möglichkeiten in der Industrieautomation, Robotik und Mechatronik. Ob Projekt, Stelle oder einfach vernetzen – ich freue mich über Ihre Nachricht.",
+          "contact.emailLabel": "E-Mail",
+          "contact.phoneLabel": "Telefon",
+          "contact.locationLabel": "Standort",
+          "contact.cta2.title": "Bereit, die Zukunft zu gestalten?",
+          "contact.cta2.desc":
+            "Ich bringe eine seltene Kombination aus akademischer Tiefe, praktischer Ingenieurerfahrung und branchenübergreifender Vielseitigkeit mit.",
+          "contact.cta2.btn": "E-Mail senden",
+        },
+      };
+
+      function setLang(lang) {
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const k = el.getAttribute("data-i18n");
+          if (T[lang][k]) el.textContent = T[lang][k];
+        });
+        document.querySelectorAll(".lang-btn").forEach((btn) => {
+          btn.classList.toggle(
+            "active",
+            btn.textContent.toLowerCase() === lang,
+          );
+        });
+        document.documentElement.lang = lang;
+      }
+
+      function toggleMenu() {
+        document.getElementById("mobileMenu").classList.toggle("open");
+      }
+      function closeMenu() {
+        document.getElementById("mobileMenu").classList.remove("open");
+      }
+
+      const obs = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          }),
+        { threshold: 0.08 },
+      );
+      document.querySelectorAll(".fade-up").forEach((el) => obs.observe(el));
+      setTimeout(
+        () =>
+          document
+            .querySelectorAll("#hero .fade-up")
+            .forEach((el) => el.classList.add("visible")),
+        80,
+      );
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.min.js"></script>
+
+<script>
+async function autoCenterFace() {
+  const img = document.getElementById('profileImage');
+
+  await faceapi.nets.tinyFaceDetector.loadFromUri('https://cdn.jsdelivr.net/npm/@vladmandic/face-api/model/');
+
+  img.onload = async () => {
+    const detection = await faceapi.detectSingleFace(
+      img,
+      new faceapi.TinyFaceDetectorOptions()
+    );
+
+    if (detection) {
+      const { x, y, width, height } = detection.box;
+
+      // Calculate center of face
+      const faceCenterY = y + height / 2;
+
+      // Convert to percentage
+      const percentY = (faceCenterY / img.naturalHeight) * 100;
+
+      // Apply position (keep X centered)
+      img.style.objectPosition = `50% ${percentY}%`;
+    }
+  };
+}
+
+autoCenterFace();
+</script>
+  </body>
+</html>
